@@ -1,0 +1,13 @@
+{
+    "name": "player1/advent-of-code",
+    "description": "My Attempt at php Advent of code",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Christmas\\": "Src/"
+        }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2"
+    }
+}
