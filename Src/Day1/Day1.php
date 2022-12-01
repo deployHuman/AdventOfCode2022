@@ -6,8 +6,9 @@ namespace Christmas\Day1;
 
 $input = file(__DIR__ . '/input.txt');
 $elfTotalCalories = 0;
-$elfNumber = 0;
-$ElfWithMost = new Elf();
+$elfNumber = 1;
+$elfcollection = new Elfs();
+$elfcollection->setMax(3);
 
 foreach ($input as $row => $value) {
     if (is_numeric($value)) {
@@ -15,14 +16,20 @@ foreach ($input as $row => $value) {
     }
 
     if (empty(trim($value))) {
-        if ($ElfWithMost->Calories < $elfTotalCalories) {
-            $ElfWithMost->Calories = $elfTotalCalories;
-            $ElfWithMost->number = $elfNumber;
-        }
+        $newElf = (new Elf($elfNumber, $elfTotalCalories));
+
+        // if ($elfcollection->isCaloriesTopOfCollection($newElf)) {
+        $elfcollection->replaceLowestCaloriesWith($newElf);
+        // }
+
         $elfTotalCalories = 0;
         $elfNumber += 1;
     }
 }
 
-echo 'The Elf with most Calories was number ' . $ElfWithMost->number . ' with ' . $ElfWithMost->Calories . " Calories\r\n";
-echo 'Answer Day 1 - Question 1: ' . $ElfWithMost->Calories . ' Question 2: ';
+$allfound = $elfcollection->getCollection();
+echo "\nResults:\n";
+foreach ($allfound as $key => $value) {
+    echo 'Elf Nr: ' . $value->Number . ' Has ' . $value->Calories . " Calories\n";
+}
+echo 'Answer Day 1 - Question 1: ' . $allfound[0]->Calories . ' Question 2: ' . $elfcollection->getTotalCalories();
