@@ -10,6 +10,10 @@ $prefix = 'Day';
 $newFileContent = '<?php
 
 declare(strict_types=1);
+
+namespace Christmas\Day' . $today . ';
+
+$input = file(__DIR__ . \'/input.txt\');
 ';
 
 $todaysFolder = $homepath . '/' . $prefix . $today;
