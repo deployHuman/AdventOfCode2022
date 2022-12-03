@@ -14,29 +14,34 @@ class Part1
 
         $sumOfPrio = 0;
         foreach ($input as $row => $value) {
-            $value = trim($value);
-            $length = strlen($value);
-
-            $halvLength = $length / 2;
-
-            $firstCompartment = str_split(mb_substr($value, 0, $halvLength));
-            $secondCompartment = str_split(mb_substr($value, $halvLength));
-
-            $intersectingLetter = array_values(array_intersect($firstCompartment, $secondCompartment));
-
-            if (!empty($intersectingLetter)) {
-                $sumOfPrio += $this->getItemPriority($intersectingLetter[0]);
+            if (! empty($value)) {
+                $sumOfPrio += $this->getItemPriority(self::getCommonItemInRucksacks($value));
             }
         }
         echo 'Answer Day 3 - Question 1: ' . $sumOfPrio . "\n";
     }
 
-    public function getItemPriority(string $item): int
+    public static function getItemPriority(string $item): int
     {
         if (mb_strtolower($item) == $item) {
             return  ord($item) - 96;
         } else {
             return ord($item) - 38;
+        }
+    }
+
+    public static function getCommonItemInRucksacks(string $longRucksacks): ?string
+    {
+        $value = trim($longRucksacks);
+        $length = strlen($value);
+        $halvLength = $length / 2;
+
+        $firstCompartment = str_split(mb_substr($value, 0, $halvLength));
+        $secondCompartment = str_split(mb_substr($value, $halvLength));
+
+        $intersectingLetter = array_values(array_intersect($firstCompartment, $secondCompartment));
+        if (! empty($intersectingLetter)) {
+            return $intersectingLetter[0];
         }
     }
 }
