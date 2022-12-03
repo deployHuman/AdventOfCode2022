@@ -17,11 +17,7 @@ foreach ($input as $row => $value) {
 
     if (empty(trim($value))) {
         $newElf = (new Elf($elfNumber, $elfTotalCalories));
-
-        // if ($elfcollection->isCaloriesTopOfCollection($newElf)) {
         $elfcollection->replaceLowestCaloriesWith($newElf);
-        // }
-
         $elfTotalCalories = 0;
         $elfNumber += 1;
     }
