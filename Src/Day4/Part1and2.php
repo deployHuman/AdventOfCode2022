@@ -52,19 +52,12 @@ class Part1and2
 
     public function isOnePairPartlyCovered(array $cleaningPairs): bool
     {
-        $lowestStartingSector = $cleaningPairs[0];
-        $highestStartingSector = $cleaningPairs[1];
-
-        return
-            $lowestStartingSector[1] >= $highestStartingSector[0];
+        return $cleaningPairs[0][1] >= $cleaningPairs[1][0];
     }
 
     public function isOnePairWhollyCovered(array $cleaningPairs): bool
     {
-        $lowestStartingSector = $cleaningPairs[0];
-        $highestStartingSector = $cleaningPairs[1];
-
-        return $lowestStartingSector[1] >= $highestStartingSector[1];
+        return $cleaningPairs[0][1] >= $cleaningPairs[1][1];
     }
 
     public function getPairs(string $bothPairofCleaningSpan)
