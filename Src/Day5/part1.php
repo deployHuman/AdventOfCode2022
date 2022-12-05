@@ -21,29 +21,46 @@ class Part1
             9 => ['G', 'N', 'F', 'H'],
         ];
 
+        //test stack
         // $stack = [
         //     1 => ['Z', 'N'],
         //     2 => ['M', 'C', 'D'],
-        //     3 => ['P']
+        //     3 => ['P'],
         // ];
+
+        $stackPart2 = $stack;
 
         foreach ($input as $row => $value) {
             $instruction = explode(' ', $value);
-            for ($i = 0; $i < $instruction[1]; $i++) {
-                $toStack = (int) $instruction[5];
-                $popped = array_pop($stack[$instruction[3]]);
-                if (empty($stack[$toStack])) {
-                    $stack[$toStack] = [];
-                }
+
+            $moveCount = (int) $instruction[1];
+            $toStack = (int) $instruction[5];
+            $fromStack = (int) $instruction[3];
+
+            if ($moveCount > 1) {
+                $poppedToPart2 = array_splice($stackPart2[$fromStack], count($stackPart2[$fromStack]) - $moveCount);
+                array_push($stackPart2[$toStack], ...$poppedToPart2);
+            } else {
+                $poppedToPart2 = array_pop($stackPart2[$fromStack]);
+                array_push($stackPart2[$toStack], $poppedToPart2);
+            }
+
+            for ($i = 0; $i < $moveCount; $i++) {
+                $popped = array_pop($stack[$fromStack]);
                 array_push($stack[$toStack], $popped);
             }
         }
 
-        $topstack = '';
-        foreach ($stack as $key => $value) {
-            $topstack .= array_pop($value);
+        echo 'Answer Day 4 - Question 1: ' . $this->getTopstack($stack) . ' Question 2: ' . $this->getTopstack($stackPart2);
+    }
+
+    public function getTopstack(array $totalstack): string
+    {
+        $returnstack = '';
+        foreach ($totalstack as $key => $value) {
+            $returnstack .= array_pop($value);
         }
 
-        echo 'Answer Day 4 - Question 1: ' . $topstack . ' Question 2: ';
+        return $returnstack;
     }
 }
