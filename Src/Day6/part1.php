@@ -20,7 +20,7 @@ class Part1
 
     public function getSequenceEnd(string $SignalCheck, int $length)
     {
-        $signalLenght = (strlen(mb_strtolower(trim($SignalCheck))) - 5);
+        $signalLenght = (strlen(mb_strtolower(trim($SignalCheck))) - ($length + 1));
         for ($i = 0; $i <  $signalLenght; $i++) {
             if (count(array_unique(str_split(substr($SignalCheck, $i, $length)))) == $length) {
                 return ($i + $length);
