@@ -9,15 +9,15 @@ class Part1
     public function __construct()
     {
         $input = file(__DIR__ . '/input.txt');
-        echo 'Answer Day 6 - Question 1: ' . $this->getSequenceEnd($input[0], 4) . ' Question 2: ' . $this->getSequenceEnd($input[0], 14);
+        echo 'Answer Day 6 - Question 1: ' . $this->getSequenceEnd($input[0], 4) . ' Question 2: ' . $this->getSequenceEnd($input[0], 14) . "\n";
     }
 
     public function getSequenceEnd(string $SignalCheck, int $length)
     {
         $signalLenght = ((strlen(trim($SignalCheck)) - ($length + 1)));
-        for ($i = 0; $i <  $signalLenght; $i++) {
+        for ($i = 0; $i < $signalLenght; $i++) {
             if (count(array_unique(str_split(substr($SignalCheck, $i, $length)))) == $length) {
-                return ($i + $length);
+                return $i + $length;
             }
         }
     }

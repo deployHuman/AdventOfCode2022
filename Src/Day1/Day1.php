@@ -24,8 +24,8 @@ foreach ($input as $row => $value) {
 }
 
 $allfound = $elfcollection->getCollection();
-echo "\nResults:\n";
-foreach ($allfound as $key => $value) {
-    echo 'Elf Nr: ' . $value->Number . ' Has ' . $value->Calories . " Calories\n";
-}
-echo 'Answer Day 1 - Question 1: ' . $allfound[0]->Calories . ' Question 2: ' . $elfcollection->getTotalCalories();
+// echo "\nResults:\n";
+// foreach ($allfound as $key => $value) {
+//     echo 'Elf Nr: ' . $value->Number . ' Has ' . $value->Calories . " Calories\n";
+// }
+echo 'Answer Day 1 - Question 1: ' . $allfound[0]->Calories . ' Question 2: ' . $elfcollection->getTotalCalories() . "\n";

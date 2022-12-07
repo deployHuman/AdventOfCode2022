@@ -23,7 +23,7 @@ class Part1and2
             }
         }
 
-        echo 'Answer Day 4 - Question 1: ' . $WhollyduplicatedCleaningArea . ' Question 2: ' . $PartlyduplicatedCleaningArea;
+        echo 'Answer Day 4 - Question 1: ' . $WhollyduplicatedCleaningArea . ' Question 2: ' . $PartlyduplicatedCleaningArea . "\n";
     }
 
     public function orderPairsLowestFirst(array $unsortedPairs): array

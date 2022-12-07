@@ -31,7 +31,7 @@ class Part2
             $groupMember += 1;
         }
 
-        echo 'Answer Day 3 - Question 2: ' . $sumOfPrioritiesOfAllGroupBadges . "\n\n";
+        echo 'Answer Day 3 - Question 2: ' . $sumOfPrioritiesOfAllGroupBadges . "\n";
     }
 
     public static function getCommonItemInWholeGroup(array $groupAllSacks): ?string

@@ -51,7 +51,7 @@ class Part1
             }
         }
 
-        echo 'Answer Day 4 - Question 1: ' . $this->getTopstack($stack) . ' Question 2: ' . $this->getTopstack($stackPart2);
+        echo 'Answer Day 5 - Question 1: ' . $this->getTopstack($stack) . ' Question 2: ' . $this->getTopstack($stackPart2) . "\n";
     }
 
     public function getTopstack(array $totalstack): string
