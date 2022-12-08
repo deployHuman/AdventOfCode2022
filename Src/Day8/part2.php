@@ -19,7 +19,7 @@ class Part2
         }
         $treeHouseScore = array_values(array_filter($treeHouseScore));
         rsort($treeHouseScore);
-        echo 'highest treescore would be ' . $treeHouseScore[0];
+        echo 'Answer Day 8 - Question 2: ' . $treeHouseScore[0] . "\n";
     }
 
     public function valueForGridSpot(int $buildx, int $buildy, array $grid): int
@@ -59,10 +59,11 @@ class Part2
             if ($blocked['lookingleft'] == true) {
                 continue;
             }
-            if ($grid[$buildx][$buildy] >= $grid[$buildx][$y]) {
+            if ($grid[$buildx][$buildy] > $grid[$buildx][$y]) {
                 $trees['lookingleft'] += 1;
             }
             if ($grid[$buildx][$buildy] <= $grid[$buildx][$y]) {
+                $trees['lookingleft'] += 1;
                 $blocked['lookingleft'] = true;
             }
         }
@@ -71,10 +72,11 @@ class Part2
             if ($blocked['lookingdown'] == true) {
                 continue;
             }
-            if ($grid[$buildx][$buildy] >= $grid[$x][$buildy]) {
+            if ($grid[$buildx][$buildy] > $grid[$x][$buildy]) {
                 $trees['lookingdown'] += 1;
             }
             if ($grid[$buildx][$buildy] <= $grid[$x][$buildy]) {
+                $trees['lookingdown'] += 1;
                 $blocked['lookingdown'] = true;
             }
         }
@@ -83,15 +85,16 @@ class Part2
             if ($blocked['lookingup'] == true) {
                 continue;
             }
-            if ($grid[$buildx][$buildy] >= $grid[$x][$buildy]) {
+            if ($grid[$buildx][$buildy] > $grid[$x][$buildy]) {
                 $trees['lookingup'] += 1;
             }
             if ($grid[$buildx][$buildy] <= $grid[$x][$buildy]) {
+                $trees['lookingup'] += 1;
                 $blocked['lookingup'] = true;
             }
         }
         // print_r($trees);
 
-        return array_product($trees);
+        return array_product(array_values($trees));
     }
 }
